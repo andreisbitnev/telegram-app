@@ -1,12 +1,5 @@
-import { redirect, type RequestEvent } from '@sveltejs/kit';
-import { checkSession } from '$lib/index';
+import { generateToken } from '$lib/index';
 
-export function load({ cookies } : RequestEvent) {
-    const session = cookies.get('session');
-    try {
-        checkSession(session);
-    } catch {
-        cookies.delete('session', {path: '/'});
-        throw redirect(307, '/signup');
-    }
+export function load() {
+	return { token: generateToken('csrf') };
 }
