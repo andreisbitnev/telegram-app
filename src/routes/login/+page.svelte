@@ -1,5 +1,7 @@
 <script lang="ts">
     import UserForm from '$lib/components/UserForm.svelte';
+    import Paragraph from '$lib/components/Paragraph.svelte';
+    import Link from '$lib/components/Link.svelte';
     import { goto } from '$app/navigation';
     
     let userData: UserInputs = {};
@@ -25,7 +27,8 @@
     {error} 
     onSuccess={login} 
     bind:userData={userData}>
-        <p class="text-sm font-light text-gray-500 dark:text-gray-400">
-            Don't have an acount yet <a href="/" class="font-medium text-primary-600 hover:underline dark:text-primary-500">Sign up</a>
-        </p>
+        <Paragraph>
+            Don't have an acount yet 
+            <Link href="/">Sign up</Link>
+        </Paragraph>
 </UserForm>

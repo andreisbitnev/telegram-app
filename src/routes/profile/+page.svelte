@@ -3,6 +3,8 @@
     import Title from '$lib/components/Title.svelte';
     import SubTitle from '$lib/components/SubTitle.svelte';
     import Button from '$lib/components/Button.svelte';
+    import Paragraph from '$lib/components/Paragraph.svelte';
+    import Link from '$lib/components/Link.svelte';
     import { goto } from '$app/navigation';
         
     let profileData: {telegramId: string, createdAt: Date, error: any};
@@ -23,8 +25,8 @@
         }
     }
 </script>
+<Title text="Profile info" />
 {#if profileData}
-    <Title text="Profile info" />
     <SubTitle text={profileData.telegramId} />
     <SubTitle text={`Created: ${formatDate(new Date(profileData.createdAt))}`} />
 {:else}
@@ -39,3 +41,6 @@
     />
     <Button text="OK" handler={getProfileData}/>
 {/if}
+<Paragraph>
+    <Link href="/">Return to app</Link>
+</Paragraph>
